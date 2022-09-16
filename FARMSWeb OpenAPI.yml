@@ -27,6 +27,9 @@ info:
   x-serviceName: youtube
 externalDocs:
   url: https://developers.google.com/youtube/
+security:
+  - FARMS_Auth:
+    - read
 paths:
   "/Machine/GetCNC/CNC/{deviceName}":
     put:
@@ -90,4 +93,9 @@ components:
             type: string
           value:
             type: string
+  securitySchemes:
+    FARMS_Auth:
+      type: apiKey
+      name: APIKey
+      in: header
    
