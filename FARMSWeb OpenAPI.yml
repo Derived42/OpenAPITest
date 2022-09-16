@@ -1,0 +1,74 @@
+openapi: 3.0.0
+servers:
+  - url: https://farmsdev.collins.com/
+info:
+  contact:
+    name: FARMS Team
+    url: https://google.com
+  description: The FARMS API provides RESTful access to shop floor machine data.
+  license:
+    name: Creative Commons Attribution 3.0
+    url: http://creativecommons.org/licenses/by/3.0/
+  termsOfService: https://developers.google.com/terms/
+  title: FARMS API v1
+  version: v1
+  x-apiClientRegistration:
+    url: https://console.developers.google.com
+  x-apisguru-categories:
+    - analytics
+    - media
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_www.google.com_images_branding_googlelogo_2x_googlelogo_color_272x92dp.png
+  x-origin:
+    - format: google
+      url: https://youtube.googleapis.com/$discovery/rest?version=v3
+      version: v1
+  x-providerName: googleapis.com
+  x-serviceName: youtube
+externalDocs:
+  url: https://developers.google.com/youtube/
+paths:
+  "/api/v1/Machine/GetCNC/CNC/{deviceName}":
+    parameters:
+      - $ref: "#/components/parameters/pageNumber"
+      - $ref: "#/components/parameters/pageSize"
+    post:
+      description: Get data for a provided CNC Machine.
+      operationId: farms.cnc.mazak.get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CNCRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CNCResponse"
+          description: Successful response
+components:
+  parameters:
+    pageNumber:
+      name: pageNumber
+      description: Page number to return
+      in: path
+      schema:
+        type: integer
+    pageSize:
+      name: pageSize
+      description: Number of records per page to return
+      in: path
+      schema:
+        type: integer  
+  schemas:
+    CNCRequest:
+      type: array
+      items:
+        type: string
+    CNCResponse:
+      type: object
+      items:
+        type: array
+          items:
+            type: string
