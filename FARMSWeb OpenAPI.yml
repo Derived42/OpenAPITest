@@ -40,7 +40,6 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: "#/components/parameters/APIKey"    
         - $ref: "#/components/parameters/pageNumber"
         - $ref: "#/components/parameters/pageSize"
       requestBody:
