@@ -37,6 +37,7 @@ paths:
           required: true
           schema:
             type: string
+        - $ref: "#/components/parameters/APIKey"    
         - $ref: "#/components/parameters/pageNumber"
         - $ref: "#/components/parameters/pageSize"
       requestBody:
@@ -64,14 +65,29 @@ components:
       description: Number of records per page to return
       in: query
       schema:
-        type: integer  
+        type: integer
+    APIKey:
+      description: API Key given by the FARMS team for authentication
+      in: header
+      name: APIKey
+      required: true
+      schema:
+        type: string  
   schemas:
     CNCRequest:
-      type: array
-      items:
-        type: string
+      type: object
+      properties:
+        Fields:
+          type: array
+          items:
+            type: string
     CNCResponse:
       type: array
       items:
-        type: string
+        type: object
+        properties:
+          key:
+            type: string
+          value:
+            type: string
    
